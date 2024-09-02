@@ -1,10 +1,11 @@
+```mermaid
 sequenceDiagram
     participant browser
     participant server
 
     browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
     activate server
-    Note over server: Fails to find /exampleapp/new_note, but saves note and returns new destination in headers.
+    Note over server: Fails to find /exampleapp/new_note, <br> but saves note and returns new destination in headers.
     server-->>browser: 302: redirect browser to /exampleapp/notes
     deactivate server
 
@@ -27,6 +28,7 @@ sequenceDiagram
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
     activate server
     server-->>browser: JSON file with notes.
+    deactivate server
+    Note right of browser: Browser executes call back upon response <br> renders the page with notes from the JSON
 
-    Note right of browser: browser executes call back upon response; renders the page with notes from the JSON.
-
+```
