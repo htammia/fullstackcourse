@@ -6,7 +6,7 @@ sequenceDiagram
 
     browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
     activate server
-    Note over server: Fails to find /exampleapp/new_note, <br> but saves note and returns new destination in headers.
+    Note left of server: Server fails to find /exampleapp/new_note, <br> but saves note and returns new destination in headers.
     server-->>browser: 302: redirect browser to /exampleapp/notes
     deactivate server
 
@@ -24,7 +24,7 @@ sequenceDiagram
     activate server
     server-->>browser: The Javascript file
     deactivate server
-    Note right of browser: Browser executing the JS code triggers fetcing the JSON file
+    Note right of browser: Browser executing the JS code <br> triggers fetcing the JSON file
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
     activate server
@@ -34,7 +34,7 @@ sequenceDiagram
 
 ```
 ## 0.5 Single Page App:
-Käyttäjä menee Single Page App versioon
+User goes to the Single Page App version of the page
 ```mermaid
 sequenceDiagram
     participant browser
@@ -54,4 +54,15 @@ sequenceDiagram
     server->>-browser: JSON file with notes.
     Note right of browser: Browser executes call back upon response <br> renders the page with notes from the JSON
     
+```
+## 0.6: Uusi muistiinpano
+User adds a new note to the Single Page App version of the page
+```mermaid
+sequenceDiagram
+    participant browser
+    participant server
+
+    browser->>+server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+    server->>-browser: 201: Created.
+    Note right of browser: The new note is added to the page.
 ```
