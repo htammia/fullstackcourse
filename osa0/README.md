@@ -1,3 +1,4 @@
+## 0.4 Uusi muistiinpano:
 ```mermaid
 sequenceDiagram
     participant browser
@@ -20,10 +21,10 @@ sequenceDiagram
     deactivate server
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
-    Note right of browser: Browser executing the JS code triggers fetcing the JSON file
     activate server
     server-->>browser: The Javascript file
     deactivate server
+    Note right of browser: Browser executing the JS code triggers fetcing the JSON file
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
     activate server
@@ -31,4 +32,26 @@ sequenceDiagram
     deactivate server
     Note right of browser: Browser executes call back upon response <br> renders the page with notes from the JSON
 
+```
+## 0.5 Single Page App:
+Käyttäjä menee Single Page App versioon
+```mermaid
+sequenceDiagram
+    participant browser
+    participant server
+
+    browser->>+server: GET https://studies.cs.helsinki.fi/exampleapp/spa
+    server-->>-browser: The HTML document of the page
+
+    browser->>+server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    server-->>-browser: The CSS file
+
+    browser->>+server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+    server-->>-browser: The Javascript file.
+    Note right of browser: Browser executing the JS code triggers fetcing the JSON file
+
+    browser->>+server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+    server->>-browser: JSON file with notes.
+    Note right of browser: Browser executes call back upon response <br> renders the page with notes from the JSON
+    
 ```
