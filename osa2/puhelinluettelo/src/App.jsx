@@ -3,55 +3,9 @@ import { useEffect, useState } from 'react'
 import personService from './services/persons'
 import Success from './components/Success'
 import Error from './components/Error'
-
-const Person = ({ person, deletePerson }) => {
-  return(
-    <li>
-      {person.name} {person.number}
-      <button onClick={deletePerson}>delete</button>
-    </li>
-  )
-}
-
-const Persons = ({ persons, deletePerson }) => {
-  return (
-    <div>
-      Persons: {persons.map(person => 
-        <Person 
-          key={person.name} 
-          person={person} 
-          deletePerson={() => deletePerson(person.id, person.name)}
-        />)}
-    </div>
-  )
-}
-
-const Filter = ({ nameFilter, onChange}) => {
-  return (
-    <div>
-      filter numbers: <input value={nameFilter} 
-      onChange={onChange}/>
-    </div>
-  )
-}
-
-const PersonForm = ({ onSubmit, name, onNameChange, number, onNumberChange}) => {
-  return(
-    <form onSubmit={onSubmit}>
-      <div>
-        name: <input value={name}
-        onChange={onNameChange} />
-      </div>
-      <div>
-        number: <input value={number}
-        onChange={onNumberChange} />
-      </div>
-      <div>
-          <button type="submit">add</button>
-      </div>
-    </form>
-  )
-}
+import Persons from './components/Persons'
+import Filter from './components/Filter'
+import PersonForm from './components/PersonForm'
 
 const App = () => {
   const [persons, setPersons] = useState([]) 
