@@ -1,3 +1,3 @@
 # Anekdootit
 
-Exercises 1.12 - 1.4 
+Exercises 1.12 - 1.14 
